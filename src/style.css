@@ -1,0 +1,18 @@
+/*!
+Theme Name: Leader Dance Theme
+Description: Theme based on Timber 2 for Leader Dance Site
+Theme URI: https://leader-dance.ru
+Version: 1.0.2
+Author: Yury Shibitov (https://shibitov.ru)
+*/
+
+/*@import './slick.css';
+@import './slick-theme.css';*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    @apply text-zinc-900 bg-white;
+}

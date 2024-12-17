@@ -10,6 +10,7 @@ class StarterSite extends Site {
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_action( 'init', array( $this, 'register_post_types' ) );
 		add_action( 'init', array( $this, 'register_taxonomies' ) );
+        add_action( 'wp_enqueue_scripts', array( $this, 'site_static') );
 
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
@@ -99,6 +100,8 @@ class StarterSite extends Site {
 		);
 
 		add_theme_support( 'menus' );
+
+        add_filter('show_admin_bar', '__return_false');
 	}
 
 	/**
@@ -142,4 +145,15 @@ class StarterSite extends Site {
 
 	    return $options;
 	}
+
+    function site_static() {
+        wp_scripts()->add_data( 'jquery', 'group', 1 );
+        wp_scripts()->add_data( 'jquery-core', 'group', 1 );
+        wp_scripts()->add_data( 'jquery-migrate', 'group', 1 );
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', 'jquery', '', true);
+        wp_enqueue_script('scripts', get_template_directory_uri() . '/script.js', 'jquery', '', true);
+        wp_dequeue_style( 'wp-block-library' );
+        wp_dequeue_style( 'wp-block-library-theme' );
+    }
 }
