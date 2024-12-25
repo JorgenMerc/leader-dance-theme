@@ -1,0 +1,22 @@
+<section class="slider">
+    <div class="slides">
+        {% for slide in slides %}
+            <div class="slide" id="slide-{{slide.id}}">
+                {% block content %}
+                    {% if slide.thumbnail %}
+                        <div class="slide_image" style="background-image: url('{{slide.thumbnail.src}}')"></div>
+                    {% endif %}
+                    <div class="slide_content wrapper">
+                        <img src="{{ theme.link }}/static/graph/graph{{ random(1,7) }}.svg" width="70" height="56" />
+                        <h3 class="slide_title">
+                            {{ slide.title }}
+                        </h3>
+                        <div class="slide_text">
+                            {{ slide.content }}
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+        {% endfor %}
+    </div>
+</section>

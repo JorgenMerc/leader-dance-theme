@@ -1,0 +1,169 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <div class="content-wrapper">
+        {% for post in front_page %}
+            <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+                <section class="article-content">
+                    <h1 class="article-h1">{{post.title}}</h1>
+                    <div class="article-body">
+                        {{post.content}}
+                    </div>
+                </section>
+            </article>
+        {% endfor %}
+
+        {% for post in front_children %}
+            {% if post.slug == 'events' %}
+                <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+                    <section class="artcle-content">
+                        <div class="grid grid-cols-2 gap-8 mb-8 p-4 bg-icy_lilac items-center">
+                            <h2 class="article-h1 text-left mb-0">{{post.title}}</h2>
+                            <div class="flex justify-end items-center">
+                                <a href="{{ site.url }}/category/events/" class="btn">
+                                    Посмотреть все события
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="article-body">
+                            <div class="posts_tiles">
+                                {% for tile in front_page_events %}
+                                    <div
+                                            class="tile"
+                                            id="post-{{tile.ID}}"
+                                            style="background-image: url('{{tile.thumbnail.src}}');"
+                                    >
+                                        <a href="{{ tile.link }}"></a>
+                                        <div class="tile_content">
+                                            <h2 class="tile_title">
+                                                {{ tile.title }}
+                                            </h2>
+                                            <div class="tile_excerpt">
+                                                {{ tile.excerpt }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            {% else %}
+                {% if post.slug == 'branches' %}
+                    <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+                        <section class="artcle-content">
+                            <div class="grid grid-cols-2 gap-8 mb-8 p-4 bg-icy_lilac items-center">
+                                <h2 class="article-h1 text-left mb-0">{{post.title}}</h2>
+                                <div class="flex justify-end items-center">
+                                    <a href="#map" class="btn">
+                                        Посмотреть на карте
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="article-body">
+                                <div class="posts_tiles branches">
+                                    {% for tile in branches %}
+                                        <div
+                                                class="tile"
+                                                id="post-{{tile.ID}}"
+                                                style="background-image: url('{{tile.thumbnail.src}}');"
+                                        >
+                                            <a href="{{ tile.link }}"></a>
+                                            <div class="tile_content">
+                                                <h2 class="tile_title">
+                                                    {{ tile.title }}
+                                                </h2>
+                                                <div class="tile_excerpt">
+                                                    {{ tile.meta('excerpt') }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                {% else %}
+                    {% if post.slug == 'digits' %}
+                        <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+                            <section class="article-content">
+                                <h2 class="article-h1">{{post.title}}</h2>
+                                <div class="article-body">
+                                    <div class="digits">
+                                        <div class="digit">
+                                            <h2 class="digit_title countUp" id="digit_1">
+                                                13
+                                            </h2>
+                                            <div class="digit_label">
+                                                лет танцуем
+                                            </div>
+                                        </div>
+                                        <div class="digit">
+                                            <div class="digit_sublabel">
+                                                Более
+                                            </div>
+                                            <h2 class="digit_title countUp" id="digit_2">
+                                                5000
+                                            </h2>
+                                            <div class="digit_label">
+                                                человек стали воспитанниками за период работы
+                                            </div>
+                                        </div>
+                                        <div class="digit">
+                                            <h2 class="digit_title countUp" id="digit_3">
+                                                75
+                                            </h2>
+                                            <div class="digit_label">
+                                                лет общий стаж танцевальной практики тренеров
+                                            </div>
+                                        </div>
+                                        <div class="digit">
+                                            <h2 class="digit_title countUp" id="digit_4">
+                                                1500
+                                            </h2>
+                                            <div class="digit_label">
+                                                конкурсов посетили за 13 лет воспитанники Центра
+                                            </div>
+                                        </div>
+                                        <div class="digit">
+                                            <h2 class="digit_title countUp" id="digit_5">
+                                                5
+                                            </h2>
+                                            <div class="digit_label">
+                                                поколений танцоров в регионе воспитанники Центра
+                                            </div>
+                                        </div>
+                                        <div class="digit">
+                                            <div class="digit_sublabel">
+                                                Более
+                                            </div>
+                                            <h2 class="digit_title countUp" id="digit_6">
+                                                300
+                                            </h2>
+                                            <div class="digit_label">
+                                                постановок создано хореографами Центра
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </article>
+                    {% else %}
+                        <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+                            <section class="article-content">
+                                <h2 class="article-h1">{{post.title}}</h2>
+                                <div class="article-body">
+                                    {{post.content}}
+                                </div>
+                            </section>
+                        </article>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

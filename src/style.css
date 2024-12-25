@@ -6,13 +6,451 @@ Version: 1.0.2
 Author: Yury Shibitov (https://shibitov.ru)
 */
 
-/*@import './slick.css';
-@import './slick-theme.css';*/
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap";
+@import './slick.css';
+@import './slick-theme.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    src: url('../static/fonts/Montserrat-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    src: url('../static/fonts/Montserrat-Bold.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: 900;
+    src: url('../static/fonts/Montserrat-Black.ttf') format('ttf');
+}
+
 html {
     @apply text-zinc-900 bg-white;
+}
+
+.wrapper {
+    @apply w-[95%] mx-auto max-w-7xl
+}
+
+header {
+    @apply relative z-50;
+
+    .row {
+        @apply py-6 flex items-center justify-between gap-4 relative z-50;
+    }
+
+    .embl_cont {
+        @apply flex items-center gap-4;
+
+        .emblem {
+            @apply w-52;
+        }
+
+        .sub_title {
+            @apply font-bold;
+        }
+    }
+
+    .nav-branches {
+        @apply text-white;
+
+        ul {
+            @apply px-8 py-4 relative bg-endless_blue
+            before:content-[''] before:w-6 before:h-6 before:bg-white before:rotate-[45deg]
+            before:absolute before:right-[-0.75rem] before:top-[-0.75rem];
+
+            li.menu-item-has-children {
+                @apply font-bold uppercase before:content-['▼'] before:text-widowmaker before:mr-4;
+
+                ul {
+                    @apply hidden absolute top-full left-0 min-w-full bg-transparent text-endless_blue p-0 before:hidden
+                    bg-white px-1 pb-1;
+
+                    li {
+                        @apply p-2 mt-1 bg-widowmaker hover:bg-endless_blue hover:text-white py-4 px-8;
+                    }
+                }
+            }
+
+            li.menu-item-has-children.expanded {
+                @apply before:content-['▲'];
+            }
+        }
+
+        ul:empty {
+            @apply hidden;
+        }
+    }
+
+    .hcard {
+        @apply flex items-center justify-end gap-2;
+
+        .contact {
+            @apply relative leading-normal bg-widowmaker hover:bg-endless_blue text-white transition-all overflow-hidden
+            before:content-[''] before:w-6 before:h-6 before:bg-white before:rotate-[45deg]
+            before:absolute before:right-[-0.75rem] before:top-[-0.75rem];
+
+            img {
+                @apply h-6 w-6 block;
+            }
+        }
+
+        .contact:nth-child(odd) {
+            @apply before:right-auto before:top-auto before:left-[-0.75rem] before:bottom-[-0.75rem];
+        }
+
+        .string {
+            @apply p-4 flex justify-between items-center gap-2 font-bold bg-endless_blue hover:bg-widowmaker;
+        }
+
+        .square {
+            @apply p-4;
+        }
+    }
+
+    .menu_cont {
+        @apply bg-icy_lilac;
+    }
+
+    .nav-main {
+        @apply relative bg-endless_blue text-white border-b-4 border-icy_lilac
+        before:content-[''] before:w-6 before:h-6 before:bg-white before:rotate-[45deg]
+        before:absolute before:right-[-0.75rem] before:top-[-0.75rem];
+
+        ul {
+            @apply flex items-center justify-start gap-2 px-4;
+
+            li {
+                @apply relative
+                before:content-[''] before:w-0 before:h-full before:absolute before:bg-widowmaker before:top-0 before:left-0
+                hover:before:w-full before:transition-all before:duration-500;
+                a {
+                    @apply relative z-20 block py-4 px-4 font-bold transition-all hover:text-white;
+                }
+            }
+
+            li.current_page_item {
+                @apply bg-widowmaker text-endless_blue;
+            }
+        }
+    }
+}
+
+.slider {
+    .slide {
+        @apply relative bg-endless_blue;
+
+        .slide_image {
+            @apply absolute z-10 top-0 left-1/2 h-full w-1/2 bg-center bg-cover opacity-80 contrast-75
+            after:content-[''] after:absolute after:top-0 after:left-0 after:w-1/4 after:h-full after:bg-gradient-to-r
+            after:from-endless_blue after:to-transparent after:opacity-50
+            before:content-[''] before:absolute before:top-0 before:right-0 before:w-1/4 before:h-full before:bg-gradient-to-r
+            before:from-transparent before:to-endless_blue before:opacity-50;
+        }
+
+        .slide_content {
+            @apply min-h-96 relative z-20 text-white flex flex-col items-start justify-end gap-4 my-8 drop-shadow-2xl;
+
+            .slide_title {
+                @apply w-1/2 min-w-56 font-black text-icy_lilac text-4xl;
+            }
+
+            .slide_text {
+                @apply w-1/2 min-w-56 text-lg;
+
+                p {
+                    @apply mb-4;
+                }
+
+                a {
+                    @apply inline-block px-8 py-4 bg-widowmaker hover:bg-icy_lilac text-endless_blue
+                    font-bold drop-shadow-2xl;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+.content-wrapper {
+    @apply py-8;
+
+    .post-type-page {
+        @apply mb-12;
+    }
+
+    h1,h2,h3,h4,h5 {
+        @apply text-endless_blue font-bold uppercase mb-4 text-opacity-85;
+    }
+
+    h1 {
+        @apply text-4xl;
+    }
+
+    .article-h1 {
+        @apply text-4xl font-black text-center p-4 bg-icy_lilac mb-8;
+    }
+
+    .article-h1:empty {
+        @apply hidden;
+    }
+
+    h2 {
+        @apply text-2xl;
+    }
+
+    h3 {
+        @apply text-lg;
+    }
+
+    h4 {
+        @apply text-base;
+    }
+
+    h5 {
+        @apply text-sm;
+    }
+
+    .has-text-align-center {
+        @apply text-center;
+    }
+
+    .has-text-align-right {
+        @apply text-right;
+    }
+
+    .wp-block-separator {
+        @apply my-12;
+    }
+
+    .wp-block-media-text {
+        @apply grid grid-cols-[1fr_60%] gap-8 items-center;
+    }
+
+    .wp-block-media-text.has-media-on-the-right {
+        @apply grid-cols-[60%_1fr];
+    }
+
+    .digits {
+        @apply grid grid-cols-3 gap-16 items-start my-16;
+
+        .digit {
+            @apply relative text-center;
+
+            h2 {
+                @apply font-black text-7xl;
+            }
+
+            .digit_sublabel {
+                @apply absolute bottom-full left-0 w-full;
+            }
+        }
+    }
+
+    .submit_form {
+        @apply border-widowmaker border-8 p-8 text-center;
+
+        .form {
+            @apply my-8;
+            p {
+                @apply grid grid-cols-2 gap-8 items-center;
+
+                input {
+                    @apply border-0 bg-icy_lilac p-4 w-full relative;
+                }
+
+                input.wpcf7-not-valid {
+                    @apply bg-red-200;
+                }
+            }
+
+            .wpcf7-not-valid-tip {
+                @apply hidden;
+            }
+        }
+
+        .wpcf7-submit {
+            @apply inline-block px-8 py-4 bg-widowmaker hover:bg-icy_lilac text-endless_blue
+            font-bold drop-shadow no-underline;
+        }
+
+        .wpcf7-spinner {
+            @apply ml-[-48px] translate-x-[58px] translate-y-[7px];
+        }
+    }
+
+    p {
+        @apply mb-4;
+    }
+
+    p:last-child {
+        @apply mb-0;
+    }
+
+    ul, ol {
+        @apply pl-4 my-4 list-outside;
+    }
+
+    ul {
+        @apply list-disc;
+    }
+
+    ol {
+        @apply list-decimal;
+    }
+
+    a.btn {
+        @apply inline-block px-8 py-4 bg-widowmaker hover:bg-icy_lilac text-endless_blue
+        font-bold drop-shadow no-underline;
+    }
+
+    a {
+        @apply underline hover:no-underline;
+    }
+
+    .wp-block-pullquote {
+        @apply bg-endless_blue p-12 text-white text-center font-bold;
+
+        a {
+            @apply text-widowmaker;
+        }
+    }
+
+    .article-image {
+        @apply h-80 bg-center bg-cover;
+    }
+
+    .posts_tiles {
+        @apply grid h-auto w-full mt-0 mb-8 mx-auto gap-4 grid-cols-3;
+
+        .tile {
+            @apply relative min-h-[250px] bg-cover text-white grid items-end cursor-pointer
+            bg-center bg-cover bg-no-repeat transition-all opacity-90 hover:opacity-100
+            after:absolute after:z-0 after:top-0 after:left-0 after:content-[''] after:w-full after:h-full
+            after:bg-endless_blue after:opacity-50;
+
+            a {
+                @apply w-full h-full absolute z-30 top-0 left-0;
+            }
+
+            .tile_content {
+                @apply p-8 pt-16 relative z-20 transition-all duration-500;
+
+                .tile_title {
+                    @apply text-white mb-0;
+                }
+
+                .tile_excerpt {
+                    @apply font-normal;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                }
+
+                .read-more {
+                    @apply hidden;
+                }
+            }
+        }
+    }
+
+    .branches {
+        @apply grid-cols-4;
+
+        .tile {
+            @apply pt-32;
+        }
+    }
+
+    .posts_tiles:not(.branches) .tile:first-child {
+        @apply before:content-[''] before:w-[200px] before:h-[65px] before:bg-[url('./static/ld_small_logo.svg')]
+        before:bg-center before:bg-cover before:bg-no-repeat before:relative before:ml-8 before:z-20;
+        grid-area: 1 / 1 / 3 / 2;
+    }
+
+    img {
+        @apply max-w-full;
+    }
+}
+
+
+
+
+
+/* Footer */
+
+footer {
+    @apply py-8 bg-widowmaker border-t-8 border-icy_lilac;
+
+    .embl_cont {
+        @apply flex items-center gap-4;
+
+        .emblem {
+            @apply w-52;
+        }
+
+        .sub_title {
+            @apply font-bold;
+        }
+    }
+
+    .hcard {
+        @apply flex items-center justify-start gap-2;
+
+        .contact {
+            @apply relative leading-normal bg-endless_blue hover:bg-endless_blue text-white transition-all overflow-hidden
+            before:content-[''] before:w-6 before:h-6 before:bg-widowmaker before:rotate-[45deg]
+            before:absolute before:right-[-0.75rem] before:top-[-0.75rem];
+
+            img {
+                @apply h-6 w-6 block;
+            }
+        }
+
+        .contact:nth-child(odd) {
+            @apply before:right-auto before:top-auto before:left-[-0.75rem] before:bottom-[-0.75rem];
+        }
+
+        .string {
+            @apply p-4 flex justify-between items-center gap-2 font-bold bg-endless_blue;
+        }
+
+        .square {
+            @apply p-4;
+        }
+    }
+
+    .nav-footer {
+        @apply relative;
+
+        ul {
+            @apply flex items-center justify-start gap-2;
+
+            li {
+                @apply relative bg-endless_blue text-white
+                before:content-[''] before:w-6 before:h-6 before:bg-widowmaker before:rotate-[45deg]
+                before:absolute before:right-[-0.75rem] before:top-[-0.75rem];
+                a {
+                    @apply relative z-20 block py-3 px-4 font-bold transition-all hover:text-white;
+                }
+            }
+        }
+    }
+
+    p a {
+        @apply text-endless_blue font-bold underline hover:no-underline;
+    }
 }

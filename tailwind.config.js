@@ -11,10 +11,17 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Montserrat'],
+        serif: ['Montserrat'],
+        mono: ['Montserrat'],
+        display: ['Montserrat'],
+        body: ['Montserrat']
+      },
       colors: {
-        'c-brown': '#D9A464',
-        'c-blue': '#3B82F6',
-        'c-orange': '#FFBF72',
+        'endless_blue': '#000044',
+        'widowmaker': '#99aaff',
+        'icy_lilac': '#e6e9f9',
       },
     },
   },
