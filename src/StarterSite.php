@@ -87,7 +87,7 @@ class StarterSite extends Site {
         );
         $context['front_page_events'] = Timber::get_posts($front_page_events);
 
-        $branches_obj = get_page_by_path('frontpage/branches');
+        $branches_obj = get_page_by_path('branches');
         $branches_args = array(
             'post_parent' => $branches_obj->ID,
             'post_type' => 'page',
@@ -216,9 +216,11 @@ class StarterSite extends Site {
         wp_enqueue_script('slick', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', 'jquery', '', true);
         wp_enqueue_script('countUp', get_template_directory_uri(). '/static/countUp.js', 'jquery', '', true);
         wp_enqueue_script('countUpJquery', get_template_directory_uri(). '/static/countUp-jquery.js', 'jquery', '', true);
+        wp_enqueue_script('wow', get_template_directory_uri(). '/static/wow.min.js', 'jquery', '', true);
         wp_enqueue_script('scripts', get_template_directory_uri() . '/script.js', 'jquery', '', true);
         wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );
+        wp_enqueue_style( 'animate', get_template_directory_uri(). '/static/animate.min.css' );
     }
 
     function vcard_settings_api_init() {

@@ -129,11 +129,41 @@ header {
             @apply flex items-center justify-start gap-2 px-4;
 
             li {
-                @apply relative
-                before:content-[''] before:w-0 before:h-full before:absolute before:bg-widowmaker before:top-0 before:left-0
-                hover:before:w-full before:transition-all before:duration-500;
                 a {
-                    @apply relative z-20 block py-4 px-4 font-bold transition-all hover:text-white;
+                    @apply relative uppercase z-20 block p-4 font-bold transition-all after:content-['']
+                    after:w-0 after:h-full after:absolute after:bg-widowmaker after:top-0
+                    after:left-0 after:transition-all after:duration-500 after:z-[-1];
+                }
+            }
+
+            li:hover {
+                a {
+                    @apply after:w-full text-endless_blue;
+                }
+            }
+
+            li.menu-item-has-children {
+                a {
+                    @apply relative block font-bold pl-8 before:absolute before:left-2 before:top-1/2 before:-translate-y-1/2
+                    before:content-['▼'] before:text-widowmaker before:mr-4 before:z-10;
+                }
+
+                ul {
+                    @apply hidden absolute top-full left-0 bg-widowmaker;
+
+                    li a {
+                        @apply pl-4 before:hidden after:hidden text-endless_blue hover:text-white;
+                    }
+                }
+            }
+
+            li.menu-item-has-children:hover {
+                a {
+                    @apply before:text-endless_blue before:content-['▲'];
+                }
+
+                ul {
+                    @apply block;
                 }
             }
 
@@ -190,7 +220,7 @@ header {
         @apply mb-12;
     }
 
-    h1,h2,h3,h4,h5 {
+    h1, h2, h3, h4, h5 {
         @apply text-endless_blue font-bold uppercase mb-4 text-opacity-85;
     }
 
@@ -263,6 +293,7 @@ header {
 
         .form {
             @apply my-8;
+
             p {
                 @apply grid grid-cols-2 gap-8 items-center;
 
@@ -299,7 +330,7 @@ header {
     }
 
     ul, ol {
-        @apply pl-4 my-4 list-outside;
+        @apply pl-5 my-4 list-outside;
     }
 
     ul {
@@ -383,6 +414,67 @@ header {
 
     img {
         @apply max-w-full;
+    }
+
+    .gallery-slider {
+        @apply my-8;
+    }
+
+    .wp-block-quote {
+        @apply my-8 bg-icy_lilac border-widowmaker border-2 border-dashed p-8;
+    }
+
+    .wp-block-columns.has-background {
+        @apply p-8;
+    }
+
+    .columns-with-map, .items-to-top {
+        @apply items-start my-8;
+    }
+
+    .wp-block-video {
+        @apply mb-8;
+    }
+
+    .wp-block-gallery.columns-default {
+        @apply grid grid-cols-3 gap-8 items-start;
+
+        .wp-element-caption {
+            @apply text-center mt-4;
+        }
+    }
+
+    .about-block {
+        @apply relative my-8 bg-icy_lilac p-8 overflow-hidden before:content-[''] before:w-16 before:h-16 before:bg-white before:rotate-[45deg]
+        before:absolute before:-right-8 before:-top-8;
+    }
+
+    .about-block.has-media-on-the-right {
+        @apply before:right-auto before:top-auto before:-left-8 before:-bottom-8;
+    }
+
+    .wp-block-table {
+        @apply my-8;
+        table {
+            @apply border-separate border-spacing-0.5;
+
+            tr:first-child {
+                td {
+                    @apply bg-widowmaker;
+                }
+            }
+
+            td {
+                @apply bg-icy_lilac p-2;
+            }
+        }
+    }
+
+    .team-gallery {
+        .wp-element-caption {
+            @apply bg-endless_blue text-white p-4 relative overflow-hidden before:content-[''] before:w-6 before:h-6
+            before:bg-white before:rotate-[45deg] before:absolute before:right-[-0.75rem] before:top-[-0.75rem];
+        }
     }
 }
 

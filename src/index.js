@@ -16,3 +16,5 @@ jQuery('.countUp').each(function () {
     countUp[jQuery(this)] = new CountUp(jQuery(this).attr('id'), parseInt(jQuery(this).html()), { enableScrollSpy: true, useGrouping: false, scrollSpyOnce: true });
     countUp[jQuery(this)].start();
 })
+
+new WOW().init();
