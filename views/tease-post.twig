@@ -1,9 +1,16 @@
 {% extends "tease.twig" %}
 
 {% block content %}
-	<h2 class="h2"><a href="{{post.link}}">{{ post.title }}</a></h2>
-		<p>{{ post.excerpt({ words:5, read_more: "Keep reading" }) }}</p>
+	<a href="{{post.link}}" alt="Перейти к посту {{ post.title }}">
 		{% if post.thumbnail.src %}
-			<img src="{{ post.thumbnail.src }}" />
+			<div class="tease-thumbnail" style="background-image: url({{ post.thumbnail.src('large') }})" ></div>
 		{% endif %}
+		<h2 class="h2">
+				{{ post.title }}
+		</h2>
+		<div class="tease-details">
+			{{ post.category }} • {{ post.date }}
+		</div>
+	</a>
+
 {% endblock %}

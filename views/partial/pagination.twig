@@ -4,12 +4,8 @@
 
             {# Previous #}
             {% if posts.pagination.prev %}
-                <li class="prev btn">
+                <li class="prev">
                     <a href="{{ posts.pagination.prev.link }}">« Предыдущая</a>
-                </li>
-            {% else %}
-                <li class="prev btn disabled">
-                    <button disabled>« Предыдущая</button>
                 </li>
             {% endif %}
 
@@ -28,12 +24,8 @@
 
             {# Next #}
             {% if posts.pagination.next %}
-                <li class="next btn">
+                <li class="next">
                     <a href="{{ posts.pagination.next.link }}">Следующая »</a>
-                </li>
-            {% else %}
-                <li class="next btn disabled">
-                    <button disabled>Следующая »</button>
                 </li>
             {% endif %}
 

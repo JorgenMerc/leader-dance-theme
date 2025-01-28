@@ -1,8 +1,6 @@
 import './style.css';
 import './slick-init.js';
 import {CountUp} from "../static/countUp";
-// import './countUp.js';
-// import './countUp-jquery.js';
 
 console.log('Разработано https://shibitov.ru');
 
@@ -18,3 +16,21 @@ jQuery('.countUp').each(function () {
 })
 
 new WOW().init();
+
+jQuery('.masonry').masonry({
+    itemSelector: '.wp-block-image',
+});
+
+jQuery(document).ready(function(){
+    jQuery("a[href$='.jpg'], a[href$='.JPG'], a[href$='.png'], a[href$='.PNG'], a[href$='.webp'], a[href$='.WEBP'], a[href$='.jpeg'], a[href$='.JPEG']")
+        .colorbox({rel:'gallery_1', transition:"elastic", maxWidth:"90%", maxHeight: "90%"});
+});
+
+jQuery('#menuOpener, #menuCloser').click(function () {
+    jQuery('#nav-main').toggleClass('expanded').toggle('fast');
+    jQuery('body').toggleClass('no-overflow');
+});
+
+jQuery(document).ready( function () {
+    jQuery('.content-wrapper table').wrap( "<div class='table_wrap'></div>" );
+});

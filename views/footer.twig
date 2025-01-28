@@ -5,8 +5,8 @@
                 {% include "menu.twig" with {'items': footer_menu.get_items, 'menu': true } %}
             </nav>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-            <div class="flex flex-col gap-4">
+        <div class="row">
+            <div class="col">
                 <div class="embl_cont">
                     <a href="{{site.url}}" title="На главную страницу">
                         <img src="{{ theme.link  ~ "/static/emblem_white.svg" }}" class="emblem" width="208" height="58" alt="Логотип Leader Dance" title="Логотип Leader Dance" />
@@ -26,12 +26,15 @@
                     <a href="{{ site.option('vcard_setting_yt') }}" class="contact square yt">
                         <img src="{{ theme.link ~ "/static/yt.svg" }}" alt="Вконтакте" width="40" height="40">
                     </a>
+                    <a href="{{ site.option('vcard_setting_ig') }}" class="contact square ig" aria-label="Ссылка на нашу страницу Instagram">
+                        <img src="{{ theme.link  ~ "/static/ig.svg" }}" alt="Instagram" width="40" height="40">
+                    </a>
                     <a href="tel:{{ site.option('vcard_setting_tel') }}" class="contact string yt">
-                        <img src="{{ theme.link ~ "/static/ph.svg" }}" alt="Вконтакте" width="40" height="40">Позвоните нам
+                        <img src="{{ theme.link ~ "/static/ph.svg" }}" alt="Вконтакте" width="40" height="40"><span>Позвоните нам</span>
                     </a>
                 </div>
             </div>
-            <div class="flex flex-col gap-4">
+            <div class="col">
                 <p>
                     Вся представленная на сайте информация носит информационный характер и не является публичной офертой. Любое использование материалов сайта возможно только с письменного согласия ИП Гливенко Дениса Сергеевича
                 </p>

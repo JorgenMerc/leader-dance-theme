@@ -20,9 +20,9 @@
 		<section id="content" role="main" class="content-wrapper">
 			<div class="wrapper">
 				{% include "partial/breadcrumbs.twig" %}
-				{% if title %}<h1>{{title}}</h1>{% endif %}
+				{% if title %}<h1 class="article-h1">{{title}}</h1>{% endif %}
 				{% block content %}
-					Sorry, no content
+					Приносим извинения, содержимое не найдено.
 				{% endblock %}
 			</div>
 			{% if sidebar %}
@@ -36,5 +36,9 @@
 			{% include 'footer.twig' %}
 			{{ function('wp_footer') }}
 		{% endblock %}
+
+		<a href="https://api.whatsapp.com/send?phone=79375073077" class="wa_button">
+			Напишите нам <img src="{{ theme.link  ~ "/static/wa.svg" }}" alt="Whatsapp" width="16" height="16" />
+		</a>
 	</body>
 </html>

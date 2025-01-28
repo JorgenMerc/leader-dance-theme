@@ -4,7 +4,7 @@
 
     <div class="content-wrapper">
         {% for post in front_page %}
-            <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.ID}}">
+            <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.slug}}">
                 <section class="article-content">
                     <h1 class="article-h1">{{post.title}}</h1>
                     <div class="article-body">
@@ -16,11 +16,11 @@
 
         {% for post in front_children %}
             {% if post.slug == 'events' %}
-                <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.ID}}">
+                <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.slug}}">
                     <section class="artcle-content">
-                        <div class="grid grid-cols-2 gap-8 mb-8 p-4 bg-icy_lilac items-center">
-                            <h2 class="article-h1 text-left mb-0">{{post.title}}</h2>
-                            <div class="flex justify-end items-center">
+                        <div class="article-title-with-button">
+                            <h2 class="article-h1">{{post.title}}</h2>
+                            <div class="title-button">
                                 <a href="{{ site.url }}/category/events/" class="btn">
                                     Посмотреть все события
                                 </a>
@@ -52,11 +52,11 @@
                 </article>
             {% else %}
                 {% if post.slug == 'branches-section' %}
-                    <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.ID}}">
+                    <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.slug}}">
                         <section class="artcle-content">
-                            <div class="grid grid-cols-2 gap-8 mb-8 p-4 bg-icy_lilac items-center">
-                                <h2 class="article-h1 text-left mb-0">{{post.title}}</h2>
-                                <div class="flex justify-end items-center">
+                            <div class="article-title-with-button">
+                                <h2 class="article-h1">{{post.title}}</h2>
+                                <div class="title-button">
                                     <a href="#map" class="btn">
                                         Посмотреть на карте
                                     </a>
@@ -88,7 +88,7 @@
                     </article>
                 {% else %}
                     {% if post.slug == 'digits' %}
-                        <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.ID}}">
+                        <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.slug}}">
                             <section class="article-content">
                                 <h2 class="article-h1">{{post.title}}</h2>
                                 <div class="article-body">
@@ -152,7 +152,7 @@
                             </section>
                         </article>
                     {% else %}
-                        <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.ID}}">
+                        <article class="post-type-{{post.post_type}} wow fadeIn" id="post-{{post.slug}}">
                             <section class="article-content">
                                 <h2 class="article-h1">{{post.title}}</h2>
                                 <div class="article-body">

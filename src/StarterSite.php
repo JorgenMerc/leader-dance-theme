@@ -217,6 +217,8 @@ class StarterSite extends Site {
         wp_enqueue_script('countUp', get_template_directory_uri(). '/static/countUp.js', 'jquery', '', true);
         wp_enqueue_script('countUpJquery', get_template_directory_uri(). '/static/countUp-jquery.js', 'jquery', '', true);
         wp_enqueue_script('wow', get_template_directory_uri(). '/static/wow.min.js', 'jquery', '', true);
+        wp_enqueue_script('masonry', get_template_directory_uri(). '/static/masonry.pkgd.min.js', 'jquery', '', true);
+        wp_enqueue_script('colorbox', get_template_directory_uri(). '/static/jquery.colorbox-min.js', 'jquery', '', true);
         wp_enqueue_script('scripts', get_template_directory_uri() . '/script.js', 'jquery', '', true);
         wp_dequeue_style( 'wp-block-library' );
         wp_dequeue_style( 'wp-block-library-theme' );
@@ -265,12 +267,20 @@ class StarterSite extends Site {
             'general',
             'vcard_setting_section'
         );
+        add_settings_field(
+            'vcard_setting_ig',
+            'Instagram (ссылка целиком)',
+            [$this, 'vcard_setting_callback_ig_function'],
+            'general',
+            'vcard_setting_section'
+        );
 
         register_setting( 'general', 'vcard_setting_tel' );
         register_setting( 'general', 'vcard_setting_email' );
         register_setting( 'general', 'vcard_setting_vk' );
         register_setting( 'general', 'vcard_setting_ok' );
         register_setting( 'general', 'vcard_setting_yt' );
+        register_setting( 'general', 'vcard_setting_ig' );
     }
 
     function vcard_setting_section_callback_function() {
@@ -314,6 +324,14 @@ class StarterSite extends Site {
 		name="vcard_setting_yt"  
 		type="text" 
 		value="' . get_option( 'vcard_setting_yt' ) . '" 
+		class="code"
+	 />';
+    }
+    function vcard_setting_callback_ig_function() {
+        echo '<input 
+		name="vcard_setting_ig"  
+		type="text" 
+		value="' . get_option( 'vcard_setting_ig' ) . '" 
 		class="code"
 	 />';
     }

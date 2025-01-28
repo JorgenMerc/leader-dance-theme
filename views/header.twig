@@ -5,7 +5,7 @@
                 <img src="{{ theme.link  ~ "/static/emblem.svg" }}" class="emblem" width="208" height="58" alt="Логотип Leader Dance" title="Логотип Leader Dance" />
             </a>
             <div class="sub_title">
-                Танцевальный<br />центр
+                Танцевальный<br /> центр
             </div>
         </div>
         <nav id="nav-branches" class="nav-branches" role="navigation">
@@ -13,22 +13,36 @@
         </nav>
         <div class="vcard hcard">
             <div class="hidden fn org">{{ site.name }}</div>
-            <a href="{{ site.option('vcard_setting_vk') }}" class="contact square vk">
+            <a href="{{ site.option('vcard_setting_vk') }}" class="contact square vk" target="_blank" aria-label="Ссылка на наш канал в VK">
                 <img src="{{ theme.link  ~ "/static/vk.svg" }}" alt="Вконтакте" width="40" height="40">
             </a>
-            <a href="{{ site.option('vcard_setting_ok') }}" class="contact square ok">
-                <img src="{{ theme.link  ~ "/static/ok.svg" }}" alt="Вконтакте" width="40" height="40">
+            <a href="{{ site.option('vcard_setting_ok') }}" class="contact square ok" aria-label="Ссылка на наш канал в Одноклассниках">
+                <img src="{{ theme.link  ~ "/static/ok.svg" }}" alt="Одноклассники" width="40" height="40">
             </a>
-            <a href="{{ site.option('vcard_setting_yt') }}" class="contact square yt">
-                <img src="{{ theme.link  ~ "/static/yt.svg" }}" alt="Вконтакте" width="40" height="40">
+            <a href="{{ site.option('vcard_setting_yt') }}" class="contact square yt" aria-label="Ссылка на наш канал в YouTube">
+                <img src="{{ theme.link  ~ "/static/yt.svg" }}" alt="Youtube" width="40" height="40">
             </a>
-            <a href="tel:{{ site.option('vcard_setting_tel') }}" class="contact string yt">
-                <img src="{{ theme.link  ~ "/static/ph.svg" }}" alt="Вконтакте" width="40" height="40">Позвоните нам
+            <a href="{{ site.option('vcard_setting_ig') }}" class="contact square ig" aria-label="Ссылка на нашу страницу Instagram">
+                <img src="{{ theme.link  ~ "/static/ig.svg" }}" alt="Instagram" width="40" height="40">
+            </a>
+            <a href="tel:{{ site.option('vcard_setting_tel') }}" class="contact string tel" aria-label="Позвонить нам">
+                <img src="{{ theme.link  ~ "/static/ph.svg" }}" alt="Телефон" width="40" height="40"><span>Позвоните нам</span>
             </a>
         </div>
+        <a id="menuOpener" class="hamburger">
+            <img src="{{ theme.link  ~ "/static/hamburger.svg" }}" alt="Instagram" width="40" height="40"><span>Меню</span>
+        </a>
     </div>
     <div class="menu_cont">
         <nav id="nav-main" class="nav-main wrapper" role="navigation">
+            <div class="embl_cont">
+                <a href="{{site.url}}" title="На главную страницу">
+                    <img src="{{ theme.link  ~ "/static/emblem_white.svg" }}" class="emblem" width="208" height="58" alt="Логотип Leader Dance" title="Логотип Leader Dance" />
+                </a>
+            </div>
+            <a id="menuCloser" class="hamburger">
+                <img src="{{ theme.link  ~ "/static/close.svg" }}" alt="Instagram" width="40" height="40"><span>Меню</span>
+            </a>
             {% include "menu.twig" with {'items': primary_menu.get_items, 'menu': true } %}
         </nav>
     </div>
