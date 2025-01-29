@@ -15,6 +15,8 @@ jQuery('.countUp').each(function () {
     countUp[jQuery(this)].start();
 })
 
+jQuery('.wp-block-image, .article-h1, .article-title-with-button, .breadcrumbs, footer, .wp-block-columns, .wp-block-media-text').addClass('wow fadeIn');
+
 new WOW().init();
 
 jQuery('.masonry').masonry({

@@ -80,7 +80,7 @@ class StarterSite extends Site {
         $context['front_children'] = Timber::get_posts($front_children_args);
 
         $front_page_events = array(
-            'category_name' => 'events',
+            'category_name' => 'main-events',
             'orderby' => 'date',
             'order' => 'DESC',
             'posts_per_page' => 5
