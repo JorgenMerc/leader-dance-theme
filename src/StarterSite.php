@@ -97,7 +97,37 @@ class StarterSite extends Site {
         );
         $context['branches'] = Timber::get_posts($branches_args);
 
+        $contact_fields = [];
+        $contacts_args = array(
+            'vk' => 'vcard_setting_vk',
+            'ok' => 'vcard_setting_ok',
+            'tg' => 'vcard_setting_tg',
+            'wa' => 'vcard_setting_wa',
+            'yt' => 'vcard_setting_yt',
+            'ig' => 'vcard_setting_ig',
+        );
+        foreach ($contacts_args as $k => $v) {
+            if (get_option($v)) {
+                $contact_fields[] = array(
+                    'name' => $k,
+                    'link' => get_option($v),
+                    'image' => get_bloginfo('template_url') . '/static/' . $k . '.svg',
+                    'class' => 'square',
+                    'link_text' => '',
+                );
+            }
+        }
+        if (get_option( 'vcard_setting_tel' )) {
+            $contact_fields[] = array(
+                'name' => 'tel',
+                'link' => get_option( 'vcard_setting_tel' ),
+                'image' => get_bloginfo('template_url').'/static/ph.svg',
+                'class' => 'string',
+                'link_text' => '<span>Позвоните нам</span>',
+            );
+        }
 
+        $context['contacts'] = $contact_fields;
 
 		return $context;
 	}
@@ -274,6 +304,20 @@ class StarterSite extends Site {
             'general',
             'vcard_setting_section'
         );
+        add_settings_field(
+            'vcard_setting_wa',
+            'Whatsapp',
+            [$this, 'vcard_setting_callback_wa_function'],
+            'general',
+            'vcard_setting_section'
+        );
+        add_settings_field(
+            'vcard_setting_tg',
+            'Telegram',
+            [$this, 'vcard_setting_callback_tg_function'],
+            'general',
+            'vcard_setting_section'
+        );
 
         register_setting( 'general', 'vcard_setting_tel' );
         register_setting( 'general', 'vcard_setting_email' );
@@ -281,6 +325,8 @@ class StarterSite extends Site {
         register_setting( 'general', 'vcard_setting_ok' );
         register_setting( 'general', 'vcard_setting_yt' );
         register_setting( 'general', 'vcard_setting_ig' );
+        register_setting( 'general', 'vcard_setting_wa' );
+        register_setting( 'general', 'vcard_setting_tg' );
     }
 
     function vcard_setting_section_callback_function() {
@@ -332,6 +378,22 @@ class StarterSite extends Site {
 		name="vcard_setting_ig"  
 		type="text" 
 		value="' . get_option( 'vcard_setting_ig' ) . '" 
+		class="code"
+	 />';
+    }
+    function vcard_setting_callback_wa_function() {
+        echo '<input 
+		name="vcard_setting_wa"  
+		type="text" 
+		value="' . get_option( 'vcard_setting_wa' ) . '" 
+		class="code"
+	 />';
+    }
+    function vcard_setting_callback_tg_function() {
+        echo '<input 
+		name="vcard_setting_tg"  
+		type="text" 
+		value="' . get_option( 'vcard_setting_tg' ) . '" 
 		class="code"
 	 />';
     }

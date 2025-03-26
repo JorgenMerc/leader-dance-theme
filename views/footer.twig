@@ -1,3 +1,4 @@
+<div class="footer-emblems"></div>
 <footer>
     <div class="wrapper">
         <div class="menu_cont mb-12">
@@ -9,29 +10,11 @@
             <div class="col">
                 <div class="embl_cont">
                     <a href="{{site.url}}" title="На главную страницу">
-                        <img src="{{ theme.link  ~ "/static/emblem_white.svg" }}" class="emblem" width="208" height="58" alt="Логотип Leader Dance" title="Логотип Leader Dance" />
+                        <img src="{{ theme.link  ~ "/static/emblem.svg" }}" class="emblem" width="208" height="58" alt="Логотип Leader Dance" title="Логотип Leader Dance" />
                     </a>
-                    <div class="sub_title">
-                        Танцевальный<br />центр
-                    </div>
                 </div>
                 <div class="vcard hcard">
-                    <div class="hidden fn org">{{ site.name }}</div>
-                    <a href="{{ site.option('vcard_setting_vk') }}" class="contact square vk">
-                        <img src="{{ theme.link ~ "/static/vk.svg" }}" alt="Вконтакте" width="40" height="40">
-                    </a>
-                    <a href="{{ site.option('vcard_setting_ok') }}" class="contact square ok">
-                        <img src="{{ theme.link ~ "/static/ok.svg" }}" alt="Вконтакте" width="40" height="40">
-                    </a>
-                    <a href="{{ site.option('vcard_setting_yt') }}" class="contact square yt">
-                        <img src="{{ theme.link ~ "/static/yt.svg" }}" alt="Вконтакте" width="40" height="40">
-                    </a>
-                    <a href="{{ site.option('vcard_setting_ig') }}" class="contact square ig" aria-label="Ссылка на нашу страницу Instagram">
-                        <img src="{{ theme.link  ~ "/static/ig.svg" }}" alt="Instagram" width="40" height="40">
-                    </a>
-                    <a href="tel:{{ site.option('vcard_setting_tel') }}" class="contact string yt">
-                        <img src="{{ theme.link ~ "/static/ph.svg" }}" alt="Вконтакте" width="40" height="40"><span>Позвоните нам</span>
-                    </a>
+                    {% include ['partial/contacts.twig'] %}
                 </div>
             </div>
             <div class="col">

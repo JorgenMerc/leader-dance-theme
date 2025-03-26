@@ -226,9 +226,14 @@ header {
 .slider {
     .slide {
         @apply relative bg-endless_blue;
+        background: -moz-linear-gradient(330deg, rgba(0,0,68,1) 50%, rgba(57,59,160,1) 100%);
+        background: -webkit-linear-gradient(330deg, rgba(0,0,68,1) 50%, rgba(57,59,160,1) 100%);
+        background: linear-gradient(330deg, rgba(0,0,68,1) 50%, rgba(57,59,160,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000044",endColorstr="#393ba0",GradientType=1);
 
         .slide_image {
-            @apply absolute z-10 top-0 left-0 md:left-1/2 h-full w-full md:w-1/2 bg-center bg-cover md:opacity-80 md:contrast-75 ;
+            @apply absolute z-10 top-0 left-0 md:left-1/2 h-full w-full md:w-1/2 bg-center bg-cover
+            md:opacity-80 md:contrast-75;
         }
 
         .slide_image:before {
@@ -242,8 +247,8 @@ header {
         }
 
         .slide_content {
-            @apply min-h-[80vh] md:min-h-96 relative z-20 text-white flex flex-col items-start justify-end gap-4 md:my-8 drop-shadow-2xl
-            bg-gradient-to-b from-transparent to-endless_blue md:to-transparent w-full md:w-[95%] p-8 pb-16 md:p-0;
+            @apply min-h-[80vh] md:min-h-96 relative z-20 text-white flex flex-col items-start justify-end gap-8 md:my-8 drop-shadow-2xl
+            bg-gradient-to-b from-transparent to-endless_blue md:to-transparent w-full md:w-[95%] p-8 pb-16 pt-48 md:px-0 md:pt-16;
 
             .slide_title {
                 @apply w-full md:w-1/2 min-w-56 font-black text-icy_lilac text-2xl md:text-3xl lg:text-4xl lg:mt-36;
@@ -263,8 +268,32 @@ header {
             }
 
             img {
-                @apply absolute top-12 left-8 lg:left-0;
+                @apply absolute top-12 left-8 lg:left-0 max-h-24 max-w-full w-auto;
             }
+        }
+    }
+
+    .slide:nth-child(odd) {
+        background: rgb(0,0,68);
+        background: -moz-linear-gradient(143deg, rgba(0,0,68,1) 50%, rgba(57,59,160,1) 100%);
+        background: -webkit-linear-gradient(143deg, rgba(0,0,68,1) 50%, rgba(57,59,160,1) 100%);
+        background: linear-gradient(143deg, rgba(0,0,68,1) 50%, rgba(57,59,160,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000044",endColorstr="#393ba0",GradientType=1);
+
+        .slide_image {
+            @apply left-auto md:left-auto right-0 md:right-1/2;
+        }
+
+        img {
+            @apply md:left-1/2 md:translate-x-[1.5rem];
+        }
+
+        .slide_title {
+            @apply ml-auto md:pl-6;
+        }
+
+        .slide_text {
+            @apply ml-auto md:pl-6;
         }
     }
 }
@@ -484,7 +513,7 @@ header {
         @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
 
         .tile {
-            @apply pt-32;
+            @apply pt-32 aspect-square after:hidden max-w-full;
         }
     }
 
@@ -529,12 +558,31 @@ header {
     }
 
     .wp-block-gallery {
+        @apply items-stretch;
+
         .wp-element-caption {
-            @apply text-center mt-4;
+            @apply relative text-center before:content-[''] before:w-6 before:h-6 before:bg-white before:rotate-[45deg]
+            before:absolute before:right-[-0.75rem] before:top-[-0.75rem];
+            background: -moz-radial-gradient(circle, rgba(57,59,160,1) 18%, rgba(0,0,68,1) 77%);
+            background: -webkit-radial-gradient(circle, rgba(57,59,160,1) 18%, rgba(0,0,68,1) 77%);
+            background: radial-gradient(circle, rgba(57,59,160,1) 18%, rgba(0,0,68,1) 77%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#393ba0",endColorstr="#000044",GradientType=1);
 
             a {
                 @apply no-underline;
             }
+        }
+
+        .wp-block-image {
+            @apply flex flex-col items-stretch justify-stretch gap-4;
+
+            .wp-element-caption {
+                @apply text-white p-4 h-full;
+            }
+        }
+
+        img {
+            @apply duration-300;
         }
     }
 
@@ -629,13 +677,26 @@ header {
     @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-stretch justify-between gap-x-4 gap-y-12;
 
     .tease {
-
         a {
-            @apply no-underline;
+            @apply no-underline flex flex-col gap-2 items-stretch h-full;
         }
 
         .tease-thumbnail {
-            @apply aspect-square mb-4 bg-center bg-cover drop-shadow;
+            @apply aspect-square bg-center bg-cover drop-shadow;
+        }
+
+        .tease-content {
+            @apply bg-endless_blue text-white p-4 relative overflow-hidden before:content-[''] before:w-6 before:h-6
+            before:bg-white before:rotate-[45deg] before:absolute before:right-[-0.75rem] before:top-[-0.75rem] text-center h-full
+            flex flex-col items-center justify-center gap-4;
+            background: -moz-radial-gradient(circle, rgba(57,59,160,1) 18%, rgba(0,0,68,1) 77%);
+            background: -webkit-radial-gradient(circle, rgba(57,59,160,1) 18%, rgba(0,0,68,1) 77%);
+            background: radial-gradient(circle, rgba(57,59,160,1) 18%, rgba(0,0,68,1) 77%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#393ba0",endColorstr="#000044",GradientType=1);
+
+            h3 {
+                @apply text-white text-base mb-0;
+            }
         }
     }
 }
@@ -665,6 +726,12 @@ header {
 }
 
 /* Footer */
+
+/*.footer-emblems {
+    @apply bg-endless_blue h-20 w-full relative
+    before:content-[''] before:absolute before:top-1/2 before:left-0 before:w-full before:h-2/3 before:-translate-y-1/2
+    before:bg-[url('./static/emblems.svg')] before:bg-contain before:bg-center before:bg-repeat-x;
+}*/
 
 footer {
     @apply py-8 bg-widowmaker border-t-8 border-icy_lilac;
@@ -743,7 +810,7 @@ footer {
 
 .wa_button {
     @apply fixed bottom-6 right-6 py-2 px-4 transition-all duration-200 bg-[#57BB63] font-bold flex items-center gap-2
-    drop-shadow text-white text-lg;
+    drop-shadow text-white text-lg z-50;
 
     img {
         @apply inline w-8 h-8;

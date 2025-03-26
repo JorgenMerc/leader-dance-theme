@@ -1,0 +1,5 @@
+{% for contact in contacts %}
+    <a href="{{ contact.link }}" class="contact {{ contact.class }} {{ contact.name }}" aria-label="">
+        <img src="{{ contact.image }}" alt="" width="40" height="40">{{ contact.link_text }}
+    </a>
+{% endfor %}

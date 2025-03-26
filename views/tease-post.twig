@@ -5,11 +5,13 @@
 		{% if post.thumbnail.src %}
 			<div class="tease-thumbnail" style="background-image: url({{ post.thumbnail.src('large') }})" ></div>
 		{% endif %}
-		<h2 class="h2">
+		<div class="tease-content">
+			<h3>
 				{{ post.title }}
-		</h2>
-		<div class="tease-details">
-			{{ post.category }} • {{ post.date }}
+			</h3>
+			<div class="tease-details">
+				{{ post.category }} • {{ post.date }}
+			</div>
 		</div>
 	</a>
 
