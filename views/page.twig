@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+	<article class="post-type-{{post.post_type}} post-{{ post.slug }}" id="post-{{post.ID}}">
 		<section class="article-content">
 			{% if post.thumbnail %}
 				<div class="article-image" style="background-image: url({{ post.thumbnail.src }});"></div>
@@ -11,5 +11,6 @@
 				{{post.content}}
 			</div>
 		</section>
+		<div class="clearer"></div>
 	</article>
 {% endblock %}

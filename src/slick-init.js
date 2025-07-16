@@ -5,7 +5,7 @@ jQuery(".slider .slides").slick({
     slidesToScroll: 1,
     arrows: true,
     dots: false,
-    adaptiveHeight: true,
+    //adaptiveHeight: true,
     responsive: [
         {
             breakpoint: 768,

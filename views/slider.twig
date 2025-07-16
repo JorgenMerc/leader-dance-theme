@@ -1,21 +1,18 @@
 <section class="slider">
     <div class="slides">
         {% for slide in slides %}
-            <div class="slide" id="slide-{{slide.id}}">
-                {% block content %}
-                    {% if slide.thumbnail %}
-                        <div class="slide_image" style="background-image: url('{{slide.thumbnail.src}}')"></div>
-                    {% endif %}
-                    <div class="slide_content wrapper">
-                        <h3 class="slide_title">
-                            {{ slide.title }}
-                        </h3>
-                        <div class="slide_text">
-                            {{ slide.content }}
-                        </div>
-                    </div>
-                {% endblock %}
-            </div>
+            {% if slide.thumbnail %}
+                <div class="slide" id="slide-{{slide.id}}">
+                    {% block content %}
+                        <a href="{{ slide.meta('link') }}" title="">
+                            <img class="slide_image" src="{{slide.thumbnail.src}}" alt="" />
+                            <div class="slide_handheld_image">
+                                {{ slide.content }}
+                            </div>
+                        </a>
+                    {% endblock %}
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 </section>

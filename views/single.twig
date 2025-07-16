@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+	<article class="post-type-{{ post.post_type }} post-{{ post.slug }}" id="post-{{ post.ID }}">
 		<section class="article-content">
 			<h1 class="article-h1">{{ post.title }}</h1>
 			<p class="blog-author">
@@ -15,7 +15,6 @@
 					</a>
 				{% endif %}
 				{{post.content}}
-				<div class="clearer"></div>
 			</div>
 		</section>
 
@@ -38,5 +37,6 @@
 				{% include "comment-form.twig" %}
 			{% endif %}
 		</section>#}
+		<div class="clearer"></div>
 	</article>
 {% endblock %}

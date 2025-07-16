@@ -185,7 +185,7 @@ class StarterSite extends Site {
 
 		add_theme_support( 'menus' );
 
-        add_filter('show_admin_bar', '__return_false');
+        //add_filter('show_admin_bar', '__return_false');
 	}
 
     public function theme_remove_supports() {
@@ -428,7 +428,7 @@ class StarterSite extends Site {
             'capability_type' => 'page',
             'public'        => true,
             'menu_position' => 6,
-            'supports'      => array( 'title', 'thumbnail', 'editor', 'page-attributes' ),
+            'supports'      => array( 'title', 'thumbnail', 'editor', 'page-attributes', 'custom-fields' ),
             'has_archive'   => true
         );
 
