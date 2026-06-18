@@ -6,8 +6,8 @@ module.exports = {
     mode: 'development',
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'static'),
-        filename: '../script.js',
+        path: path.resolve(__dirname, 'assets/js'),
+        filename: 'script.js',
     },
     module: {
         rules: [
@@ -18,7 +18,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            publicPath: path.resolve(__dirname, 'static'),
+                            publicPath: '../css/',
                         },
                     },
                     {
@@ -37,7 +37,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "../style.css",
+            filename: '../css/style.css',
         })
     ],
     optimization: {

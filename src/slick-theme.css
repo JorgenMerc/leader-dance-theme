@@ -138,7 +138,7 @@
     color: transparent;
     border: 0;
     outline: none;
-    @apply rounded-full bg-white drop-shadow;
+    @apply rounded-full bg-white drop-shadow-sm;
 }
 .slick-dots li button:hover,
 .slick-dots li button:focus {

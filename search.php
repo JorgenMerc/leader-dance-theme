@@ -1,18 +1,18 @@
 <?php
-/**
- * Search results page
- *
- * Methods for TimberHelper can be found in the /lib sub-directory
- *
- * @package  WordPress
- * @subpackage  Timber
- * @since   Timber 0.1
- */
+leader_dance_page_title( 'Search results for ' . get_search_query() );
 
-$templates = array( 'search.twig', 'archive.twig', 'index.twig' );
-
-$context          = Timber::context();
-$context['title'] = 'Search results for ' . get_search_query();
-$context['posts'] = Timber::get_posts();
-
-Timber::render( $templates, $context );
+get_header();
+?>
+<div class="content-wrapper">
+	<?php if ( have_posts() ) : ?>
+		<?php
+		while ( have_posts() ) :
+			the_post();
+			leader_dance_render_tease();
+		endwhile;
+		?>
+		<?php leader_dance_pagination(); ?>
+	<?php endif; ?>
+</div>
+<?php
+get_footer();

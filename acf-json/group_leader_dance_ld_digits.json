@@ -1,0 +1,146 @@
+{
+    "key": "group_leader_dance_ld_digits",
+    "title": "LD в цифрах",
+    "fields": [
+        {
+            "key": "field_leader_dance_ld_digits",
+            "label": "Цифры",
+            "name": "ld_digits",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Блок «Лидер в цифрах» на главной странице.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 1,
+            "max": 12,
+            "collapsed": "",
+            "button_label": "Добавить цифру",
+            "rows_per_page": 20,
+            "default_value": [
+                {
+                    "prefix": "",
+                    "value": 15,
+                    "label": "лет танцуем"
+                },
+                {
+                    "prefix": "Более",
+                    "value": 5000,
+                    "label": "человек стали воспитанниками за период работы"
+                },
+                {
+                    "prefix": "",
+                    "value": 75,
+                    "label": "лет общий стаж танцевальной практики тренеров"
+                },
+                {
+                    "prefix": "",
+                    "value": 1500,
+                    "label": "конкурсов посетили за 13 лет воспитанники Центра"
+                },
+                {
+                    "prefix": "",
+                    "value": 5,
+                    "label": "поколений танцоров в регионе воспитанники Центра"
+                },
+                {
+                    "prefix": "Более",
+                    "value": 300,
+                    "label": "постановок создано хореографами Центра"
+                }
+            ],
+            "sub_fields": [
+                {
+                    "key": "field_leader_dance_ld_digit_prefix",
+                    "label": "Префикс",
+                    "name": "prefix",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Например: «Более».",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_leader_dance_ld_digits"
+                },
+                {
+                    "key": "field_leader_dance_ld_digit_value",
+                    "label": "Значение",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Если пусто — строка не показывается.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "step": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_leader_dance_ld_digits"
+                },
+                {
+                    "key": "field_leader_dance_ld_digit_label",
+                    "label": "Подпись",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Если пусто — строка не показывается.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_leader_dance_ld_digits"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "leader-dance-theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1781792333
+}

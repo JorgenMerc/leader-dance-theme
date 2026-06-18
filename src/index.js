@@ -1,6 +1,6 @@
 import './style.css';
 import './slick-init.js';
-import {CountUp} from "../static/countUp";
+import {CountUp} from "../assets/js/countUp";
 
 console.log('Разработано https://shibitov.ru');
 
