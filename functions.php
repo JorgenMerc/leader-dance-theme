@@ -121,16 +121,27 @@ function leader_dance_get_front_children(): array {
 	);
 }
 
-/** Возвращает последние события для блока на главной. */
-function leader_dance_get_front_page_events(): array {
+/** Возвращает последние записи рубрики для блока на главной. */
+function leader_dance_get_front_page_category_posts( string $category_slug, int $limit = 5 ): array {
 	return get_posts(
 		array(
-			'category_name'  => 'main-events',
+			'category_name'  => $category_slug,
 			'orderby'        => 'date',
 			'order'          => 'DESC',
-			'posts_per_page' => 5,
+			'posts_per_page' => $limit,
 		)
 	);
+}
+
+/** Возвращает ссылку на архив рубрики по slug. */
+function leader_dance_get_category_link( string $slug ): string {
+	$link = get_term_link( $slug, 'category' );
+
+	if ( is_wp_error( $link ) ) {
+		return home_url( '/' );
+	}
+
+	return $link;
 }
 
 /**

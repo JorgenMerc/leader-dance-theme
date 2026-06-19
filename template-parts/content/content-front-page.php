@@ -1,5 +1,4 @@
 <?php
-$front_page_events = leader_dance_get_front_page_events();
 ?>
 <div class="content-wrapper">
 	<?php foreach ( leader_dance_get_front_page_posts() as $post ) : ?>
@@ -19,36 +18,52 @@ $front_page_events = leader_dance_get_front_page_events();
 	// Child pages of frontpage use dedicated layouts by slug.
 	foreach ( leader_dance_get_front_children() as $post ) :
 		setup_postdata( $post );
-		if ( 'events' === $post->post_name ) :
+		if ( 'news' === $post->post_name ) :
 			?>
 			<article class="post-type-<?php echo esc_attr( $post->post_type ); ?> wow fadeIn" id="post-<?php echo esc_attr( $post->post_name ); ?>">
 				<section class="artcle-content">
 					<div class="article-title-with-button">
 						<h2 class="article-h1"><?php echo esc_html( get_the_title( $post ) ); ?></h2>
 						<div class="title-button">
-							<a href="<?php echo esc_url( home_url( '/category/events/' ) ); ?>" class="btn">
+							<a href="<?php echo esc_url( leader_dance_get_category_link( 'main-events' ) ); ?>" class="btn">
+								Посмотреть все новости
+							</a>
+						</div>
+					</div>
+					<div class="article-body">
+						<?php
+						get_template_part(
+							'template-parts/partial/posts-tiles',
+							null,
+							array(
+								'posts' => leader_dance_get_front_page_category_posts( 'main-events' ),
+							)
+						);
+						?>
+					</div>
+				</section>
+			</article>
+		<?php elseif ( 'events' === $post->post_name ) : ?>
+			<article class="post-type-<?php echo esc_attr( $post->post_type ); ?> wow fadeIn" id="post-<?php echo esc_attr( $post->post_name ); ?>">
+				<section class="artcle-content">
+					<div class="article-title-with-button">
+						<h2 class="article-h1"><?php echo esc_html( get_the_title( $post ) ); ?></h2>
+						<div class="title-button">
+							<a href="<?php echo esc_url( leader_dance_get_category_link( 'events' ) ); ?>" class="btn">
 								Посмотреть все события
 							</a>
 						</div>
 					</div>
 					<div class="article-body">
-						<div class="posts_tiles">
-							<?php foreach ( $front_page_events as $tile ) : ?>
-								<?php
-								$thumb = get_the_post_thumbnail_url( $tile->ID );
-								if ( ! $thumb ) {
-									continue;
-								}
-								?>
-								<div class="tile wow fadeIn" id="post-<?php echo esc_attr( $tile->ID ); ?>" style="background-image: url('<?php echo esc_url( $thumb ); ?>');">
-									<a href="<?php echo esc_url( get_permalink( $tile ) ); ?>"></a>
-									<div class="tile_content">
-										<h2 class="tile_title"><?php echo esc_html( get_the_title( $tile ) ); ?></h2>
-										<div class="tile_excerpt"><?php echo esc_html( get_the_excerpt( $tile ) ); ?></div>
-									</div>
-								</div>
-							<?php endforeach; ?>
-						</div>
+						<?php
+						get_template_part(
+							'template-parts/partial/posts-tiles',
+							null,
+							array(
+								'posts' => leader_dance_get_front_page_category_posts( 'events' ),
+							)
+						);
+						?>
 					</div>
 				</section>
 			</article>

@@ -345,32 +345,44 @@ header {
         }
     }
 
-    .submit_form {
+    .submit_form,
+    .wpcf7-form:has(.form-actions) {
         @apply border-widowmaker border-8 p-8 text-center;
 
+        > p:has(.wpcf7-form-control-wrap[data-name="firstname"]),
         .form {
             @apply my-8;
 
             p {
                 @apply grid grid-cols-1 md:grid-cols-2 gap-8 items-center;
-
-                input {
-                    @apply border-0 bg-icy_lilac p-4 w-full relative;
-                }
-
-                input.wpcf7-not-valid {
-                    @apply bg-red-200;
-                }
             }
+        }
 
-            .wpcf7-not-valid-tip {
-                @apply hidden;
-            }
+        > p:has(.wpcf7-form-control-wrap[data-name="firstname"]) {
+            @apply grid grid-cols-1 md:grid-cols-2 gap-8 items-center;
+        }
+
+        .wpcf7-form-control-wrap {
+            @apply block w-full;
+        }
+
+        input.wpcf7-text,
+        input.wpcf7-email,
+        input.wpcf7-tel {
+            @apply border-0 bg-icy_lilac p-4 w-full relative;
+        }
+
+        input.wpcf7-not-valid {
+            @apply bg-red-200;
+        }
+
+        .wpcf7-not-valid-tip {
+            @apply hidden;
         }
 
         .wpcf7-submit {
             @apply inline-block px-8 py-4 bg-widowmaker hover:bg-icy_lilac text-endless_blue
-            font-bold drop-shadow-sm no-underline;
+            font-bold drop-shadow-sm no-underline border-0 cursor-pointer;
         }
 
         .form-actions {
@@ -512,8 +524,32 @@ header {
         @apply max-w-full;
     }
 
+    .wp-block-image img {
+        @apply w-full h-auto block;
+    }
+
     .gallery-slider {
-        @apply my-8;
+        @apply my-8 block!;
+
+        &.has-nested-images {
+            @apply block!;
+
+            figure.wp-block-image {
+                @apply m-0! max-w-full!;
+
+                img {
+                    @apply block h-auto max-w-full duration-300;
+                    width: 100%;
+                    height: auto !important;
+                    flex: none !important;
+                }
+            }
+
+            &.is-cropped figure.wp-block-image img {
+                height: auto !important;
+                object-fit: unset !important;
+            }
+        }
     }
 
     .wp-block-quote {
@@ -533,44 +569,97 @@ header {
     }
 
     .wp-block-gallery {
-        @apply items-stretch;
+        @apply items-stretch gap-8;
+
+        &.has-nested-images:not(.gallery-slider) {
+            @apply grid! items-stretch!;
+
+            figure.wp-block-image {
+                @apply w-full! max-w-full! m-0!;
+
+                > a,
+                > div {
+                    @apply block w-full h-auto!;
+                    flex: none !important;
+                }
+
+                img {
+                    @apply w-full! h-auto! block max-w-full! duration-300;
+                    flex: none !important;
+                }
+            }
+
+            &.is-cropped:not(.team-gallery) figure.wp-block-image {
+                img {
+                    height: auto !important;
+                    object-fit: unset !important;
+                }
+            }
+        }
 
         .wp-element-caption {
-            @apply relative text-center before:content-[''] before:w-6 before:h-6 before:bg-white before:rotate-[45deg]
-            before:absolute before:right-[-0.75rem] before:top-[-0.75rem] bg-endless_blue;
+            @apply relative text-center;
 
             a {
                 @apply no-underline;
             }
         }
 
-        .wp-block-image {
-            @apply flex flex-col items-stretch justify-stretch gap-4;
+        &.has-nested-images:not(.team-gallery):not(.gallery-slider) figure.wp-block-image:has(.wp-element-caption) {
+            @apply relative overflow-hidden;
 
             .wp-element-caption {
-                @apply text-white p-4 h-full;
+                @apply absolute! bottom-0! left-0! right-0! top-auto! z-10;
+                @apply w-full! h-auto! max-h-none! p-4 text-white text-center;
+                background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), transparent) !important;
+                flex: none !important;
+                flex-grow: 0 !important;
+                margin: 0 !important;
+                text-shadow: 0 0 1.5px #000 !important;
+
+                &::before {
+                    display: none !important;
+                    content: none !important;
+                }
             }
         }
 
-        img {
-            @apply duration-300;
+        &:not(.gallery-slider) .wp-block-image {
+            @apply flex flex-col items-stretch justify-stretch gap-4;
+
+            a {
+                @apply block w-full;
+            }
+
+            img {
+                @apply w-full h-auto block duration-300;
+            }
+
+            .wp-element-caption {
+                @apply p-4;
+            }
         }
     }
 
-    .wp-block-gallery.columns-default {
-        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-start;
+    .wp-block-gallery.columns-default:not(.gallery-slider) {
+        @apply grid! grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-stretch;
     }
 
-    .wp-block-gallery.columns-2 {
-        @apply grid grid-cols-1 sm:grid-cols-2 gap-8 items-start;
+    .wp-block-gallery.columns-2:not(.gallery-slider) {
+        @apply grid! grid-cols-1 sm:grid-cols-2 gap-8 items-stretch;
     }
 
-    .wp-block-gallery.columns-3 {
-        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-start;
+    .wp-block-gallery.columns-3:not(.gallery-slider) {
+        @apply grid! grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-stretch;
     }
 
-    .wp-block-gallery.columns-4 {
-        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-start;
+    .wp-block-gallery.columns-4:not(.gallery-slider) {
+        @apply grid! grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-stretch;
+    }
+
+    .wp-block-gallery.columns-8:not(.gallery-slider),
+    .wp-block-gallery.columns-1:not(.gallery-slider) {
+        @apply grid! grid-cols-1 gap-8 items-stretch;
     }
 
     .wp-block-gallery.masonry {
@@ -617,9 +706,46 @@ header {
     }
 
     .team-gallery {
+        figure.wp-block-image {
+            @apply w-full! max-w-full!;
+
+            a {
+                @apply block w-full;
+                flex: none !important;
+                height: auto !important;
+            }
+
+            img {
+                @apply w-full! block;
+                flex: none !important;
+            }
+        }
+
+        &.is-cropped figure.wp-block-image {
+            @apply relative aspect-square overflow-hidden;
+
+            &::before {
+                display: none !important;
+                content: none !important;
+            }
+
+            img {
+                @apply w-full! h-full! object-cover!;
+                height: 100% !important;
+                object-fit: cover !important;
+            }
+        }
+
         .wp-element-caption {
-            @apply bg-endless_blue text-white p-4 relative overflow-hidden before:content-[''] before:w-6 before:h-6
-            before:bg-white before:rotate-[45deg] before:absolute before:right-[-0.75rem] before:top-[-0.75rem];
+            @apply absolute! bottom-0! left-0! right-0! top-auto! z-10;
+            @apply bg-endless_blue text-white p-4 w-full! h-auto! text-center;
+            flex: none !important;
+            margin: 0 !important;
+
+            &::before {
+                display: none !important;
+                content: none !important;
+            }
         }
     }
 
@@ -666,7 +792,7 @@ header {
             flex flex-col items-center justify-center gap-4;
 
             h3 {
-                @apply text-white text-base mb-0;
+                @apply mb-0 w-full text-base text-white line-clamp-3;
             }
         }
     }

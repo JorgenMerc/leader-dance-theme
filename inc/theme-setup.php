@@ -45,6 +45,8 @@ class Leader_Dance_Theme {
 			)
 		);
 		add_theme_support( 'menus' );
+
+		add_editor_style( 'assets/css/style.css' );
 	}
 
 	public function theme_remove_supports(): void {
