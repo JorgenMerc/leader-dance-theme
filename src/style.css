@@ -77,7 +77,7 @@ header {
         @apply flex items-start md:items-center gap-4 flex-col md:flex-row;
 
         .emblem {
-            @apply w-52;
+            @apply w-[205px] h-[78px];
         }
 
         .sub_title {
@@ -373,13 +373,29 @@ header {
             font-bold drop-shadow-sm no-underline;
         }
 
-        .wpcf7-spinner {
-            @apply ml-[-48px] translate-x-[58px] translate-y-[7px];
+        .form-actions {
+            @apply my-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4;
+
+            p {
+                @apply m-0;
+            }
+
+            .smart-captcha,
+            .cfyc-captcha-container {
+                @apply my-0 flex justify-start w-full md:w-auto md:flex-1 md:max-w-none;
+            }
+
+            .wpcf7-submit {
+                @apply w-full md:w-auto shrink-0 md:ml-auto;
+            }
+
+            .wpcf7-spinner {
+                @apply static ml-2 translate-x-0 translate-y-0;
+            }
         }
 
-        .smart-captcha,
-        .cfyc-captcha-container {
-            @apply my-4 flex justify-center;
+        .wpcf7-spinner {
+            @apply ml-[-48px] translate-x-[58px] translate-y-[7px];
         }
     }
 
@@ -697,7 +713,7 @@ footer {
         @apply flex items-center flex-wrap lg:flex-nowrap gap-4;
 
         .emblem {
-            @apply w-52;
+            @apply w-[205px] h-[78px];
         }
 
         .sub_title {
@@ -754,15 +770,6 @@ footer {
 
     p a {
         @apply text-endless_blue font-bold underline hover:no-underline;
-    }
-}
-
-.wa_button {
-    @apply fixed bottom-6 right-6 py-2 px-4 transition-all duration-200 bg-[#57BB63] font-bold flex items-center gap-2
-    drop-shadow-sm text-white text-lg z-50;
-
-    img {
-        @apply inline w-8 h-8;
     }
 }
 

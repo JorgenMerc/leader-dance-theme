@@ -21,9 +21,7 @@
 <header>
 	<div class="row wrapper">
 		<div class="embl_cont">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="На главную страницу">
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/emblem.svg' ); ?>" class="emblem" width="208" height="58" alt="Логотип Leader Dance" title="Логотип Leader Dance" />
-			</a>
+			<?php leader_dance_render_site_logo( 'header' ); ?>
 		</div>
 		<nav id="nav-branches" class="nav-branches" role="navigation">
 			<?php leader_dance_render_nav_menu( 'branches-navigation' ); ?>
@@ -39,9 +37,7 @@
 	<div class="menu_cont">
 		<nav id="nav-main" class="nav-main wrapper" role="navigation">
 			<div class="embl_cont">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="На главную страницу">
-					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/emblem_white.svg' ); ?>" class="emblem" width="208" height="58" alt="Логотип Leader Dance" title="Логотип Leader Dance" />
-				</a>
+				<?php leader_dance_render_menu_logo(); ?>
 			</div>
 			<a id="menuCloser" class="hamburger">
 				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/close.svg' ); ?>" alt="Закрыть" width="40" height="40"><span>Меню</span>

@@ -1,6 +1,7 @@
 <?php
 
 require_once get_template_directory() . '/inc/theme-setup.php';
+require_once get_template_directory() . '/inc/customizer.php';
 require_once get_template_directory() . '/inc/acf-theme-settings.php';
 
 Leader_Dance_Theme::init();
