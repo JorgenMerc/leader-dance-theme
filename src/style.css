@@ -376,6 +376,11 @@ header {
         .wpcf7-spinner {
             @apply ml-[-48px] translate-x-[58px] translate-y-[7px];
         }
+
+        .smart-captcha,
+        .cfyc-captcha-container {
+            @apply my-4 flex justify-center;
+        }
     }
 
     p {
